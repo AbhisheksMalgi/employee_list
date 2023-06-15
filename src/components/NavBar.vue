@@ -1,18 +1,17 @@
 <template>
     <nav class="navbar navbar-light navbar-expand-sm">
-        <div class="container">
+        <!-- <div class="container">
             <RouterLink to="/" class="navbar-brand">
-                <i class="fa fa-home"></i> Home View</RouterLink>
-        </div>
+                <b>Home View</b>
+            </RouterLink>
+        </div> -->
     </nav>
-  </template>
+</template>
   
-  <script>
-  export default {
-      name: "NavBar"
-  }
-  </script>
+<script>
+// export default {
+//     name: "NavBar"
+// }
+</script>
   
-  <style scoped>
-  
-  </style>
+<style scoped></style>

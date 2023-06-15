@@ -6,14 +6,12 @@
             </div>
         </div>
     </div>
-  </template>
+</template>
   
-  <script>
-  export default {
-      name: "PageNotFound"
-  }
-  </script>
+<script>
+export default {
+    name: "PageNotFound"
+}
+</script>
   
-  <style scoped>
-  
-  </style>
+<style scoped></style>

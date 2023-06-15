@@ -2,90 +2,129 @@
   <div>
     <div class="row mt-3">
       <div class="col">
-        <router-link to="/" class="btn btn-success ms-3"><i class="fa fa-arrow-alt-circle-left"></i> Back</router-link>
+        <router-link to="/" class="btn btn-primary ms-3">Back</router-link>
       </div>
     </div>
-  <div class="container mt-3">
-      <div class="row">
-          <div class="col">
-              <p class="h3 text-success fw-bold">View Contact</p>
-          </div>
-      </div>
-  </div> 
-  <div v-if="loading">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <spinner/>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div v-if="!loading && errorMessage">
     <div class="container mt-3">
-        <div class="row">
-            <div class="col">
-                <p class="h4 text-danger fw-bold">{{errorMessage}}</p>
-            </div>
+      <div class="row">
+        <div class="col">
+          <p class="h3 text-center fw-bold">Details</p>
         </div>
-    </div>
-</div>
-  <div class="container" v-if="!loading && isDone">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <ul class="list-group">
-             <li class="list-group-item">Name : <span class="fw-bold">{{contact.name}}</span></li>
-             <li class="list-group-item">Last Name : <span class="fw-bold">{{contact.lastname}}</span></li>
-             <li class="list-group-item">Field of Employment : <span class="fw-bold">{{contact.fieldofemployment}}</span></li>
-             <li class="list-group-item">About : <span class="fw-bold">{{contact.about}}</span></li>
-             <li class="list-group-item">Skill : <span class="fw-bold">{{group.skill}}</span></li>
-         </ul>
       </div>
+    </div>
+    <div v-if="loading">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <spinner />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="!loading && errorMessage">
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col">
+            <p class="h4 text-danger fw-bold">{{ errorMessage }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" v-if="!loading && isDone">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item">
+              Name : <span class="fw-bold">{{ contact.name }}</span>
+              <div class="text-end">
+                <button class="btn btn-lg" :class="{ 'btn-success': !contact.available, 'btn-danger': contact.available }"
+                  @click="toggleAvailability(!contact.available)">
+                </button>
+              </div>
+            </li>
+            <li class="list-group-item">
+              Last Name : <span class="fw-bold">{{ contact.lastname }}</span>
+            </li>
+            <li class="list-group-item">
+              Field of Employment :
+              <span class="fw-bold">{{ contact.fieldofemployment }}</span>
+            </li>
+            <li class="list-group-item">Skills: <span class="fw-bold">
+                <ul>
+                  <li v-for="(skill, index) in contact.skills" :key="index">{{ skill }}</li>
+                </ul>
+              </span></li>
+            <li class="list-group-item">
+              About : <span class="fw-bold">{{ contact.about }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1 d-flex flex align-items-center">
+      <RouterLink :to="`/contacts/edit/${contact.id}`" class="btn btn-primary ms-3">Edit
+      </RouterLink>
+      <button class="btn btn-primary ms-2 my-2" @click="clickDeleteContact(contact.id)">Delete
+      </button>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-import { ContactService } from '@/services/ContactService';
-import Spinner from '../components/Spinner.vue';
+import { ContactService } from "@/services/ContactService";
+import Spinner from "../components/Spinner.vue";
+import axios from "axios";
 
 export default {
   components: { Spinner },
-    name: "ViewContact",
-    data : function(){
-      return {
-        contactId : this.$route.params.contactId,
-        loading : false,
-        contact : {},
-        errorMessage : null,
-        group : {}
-      }
+  name: "ViewContact",
+  data: function () {
+    return {
+      contactId: this.$route.params.contactId,
+      loading: false,
+      contact: {},
+      errorMessage: null,
+    };
+  },
+  created: async function () {
+    try {
+      this.loading = true;
+      let response = await ContactService.getContact(this.contactId);
+      this.contact = response.data;
+      this.loading = false;
+    } catch (error) {
+      this.errorMessage = error;
+      this.loading = false;
+    }
+  },
+  methods: {
+    isDone: function () {
+      return Object.keys(this.contact).length > 0 && Object.keys(this.group).length > 0;
     },
-    created : async function (){
+    clickDeleteContact: async function (contactId) {
       try {
         this.loading = true;
-        let response = await ContactService.getContact(this.contactId);
-        let groupResponse = await ContactService.getGroup(response.data);
-        this.contact = response.data;
-        this.group = groupResponse.data;
-        this.loading = false;
-      }
-      catch (error){
+        let response = await ContactService.deleteContact(contactId);
+        if (response) {
+          alert("Deleated Successfully");
+          let response = await ContactService.getAllContacts();
+          this.contacts = response.data;
+          this.loading = false;
+          return this.$router.push('/');
+        }
+      } catch (error) {
         this.errorMessage = error;
         this.loading = false;
       }
     },
-    methods : {
-      isDone : function (){
-        return Object.keys(this.contact).length > 0 && Object.keys(this.group).length > 0;
-      }
+    toggleAvailability: function (status) {
+      axios.patch(`http://localhost:9000/contacts/${this.contactId}`, { available: status })
+      window.location.reload();
     }
+  },
 }
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
