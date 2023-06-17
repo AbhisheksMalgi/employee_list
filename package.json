@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "node start.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -11,6 +12,7 @@
     "@fortawesome/fontawesome-free": "^6.4.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
+    "concurrently": "^8.2.0",
     "core-js": "^3.8.3",
     "json-server": "^0.17.3",
     "vue": "^3.2.13",

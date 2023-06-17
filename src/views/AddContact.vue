@@ -12,14 +12,14 @@
                 <div class="col-md-4">
                     <form @submit.prevent="submitCreate()">
                         <div class="mb-2">
-                            <input required v-model="contact.name" type="text" class="form-control" placeholder="Name">
+                            <input required v-model="contact.firstName" type="text" class="form-control" placeholder="Name">
                         </div>
                         <div class="mb-2">
-                            <input required v-model="contact.lastname" type="text" class="form-control"
+                            <input required v-model="contact.lastName" type="text" class="form-control"
                                 placeholder="Last Name">
                         </div>
                         <div class="mb-2">
-                            <input required v-model="contact.fieldofemployment" type="text" class="form-control"
+                            <input required v-model="contact.department" type="text" class="form-control"
                                 placeholder="Field of Employment">
                         </div>
                         <div v-for="(skill, index) in contact.skills" :key="index">
@@ -30,7 +30,7 @@
                         </div>
                         <button class="btn btn-sm btn-primary ms-2 my-2" type="button" @click="addField">Add Skill</button>
                         <div class="mb-2">
-                            <input required v-model="contact.about" type="text" class="form-control" placeholder="About">
+                            <input required v-model="contact.info" type="text" class="form-control" placeholder="About">
                         </div>
                         <div class="col-sm-1 d-flex flex align-items-center">
                             <router-link to="/" class="btn btn-primary ms-3">Cancel</router-link>
@@ -51,12 +51,12 @@ export default {
     data: function () {
         return {
             contact: {
-                name: '',
-                lastname: '',
-                fieldofemployment: '',
-                about: '',
+                active: true,
+                department: '',
+                firstName: '',
+                lastName: '',
+                info: '',
                 skills: [""],
-                available: true
             },
         }
     },

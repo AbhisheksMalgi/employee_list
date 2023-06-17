@@ -37,19 +37,19 @@
         <div class="col-md-6">
           <ul class="list-group">
             <li class="list-group-item">
-              Name : <span class="fw-bold">{{ contact.name }}</span>
+              Name : <span class="fw-bold">{{ contact.firstName }}</span>
               <div class="text-end">
-                <button class="btn btn-lg" :class="{ 'btn-success': !contact.available, 'btn-danger': contact.available }"
-                  @click="toggleAvailability(!contact.available)">
+                <button class="btn btn-lg" :class="{ 'btn-success': !contact.active, 'btn-danger': contact.active }"
+                  @click="toggleAvailability(!contact.active)">
                 </button>
               </div>
             </li>
             <li class="list-group-item">
-              Last Name : <span class="fw-bold">{{ contact.lastname }}</span>
+              Last Name : <span class="fw-bold">{{ contact.lastName }}</span>
             </li>
             <li class="list-group-item">
               Field of Employment :
-              <span class="fw-bold">{{ contact.fieldofemployment }}</span>
+              <span class="fw-bold">{{ contact.department }}</span>
             </li>
             <li class="list-group-item">Skills: <span class="fw-bold">
                 <ul>
@@ -57,7 +57,7 @@
                 </ul>
               </span></li>
             <li class="list-group-item">
-              About : <span class="fw-bold">{{ contact.about }}</span>
+              About : <span class="fw-bold">{{ contact.info }}</span>
             </li>
           </ul>
         </div>
@@ -120,7 +120,7 @@ export default {
       }
     },
     toggleAvailability: function (status) {
-      axios.patch(`http://localhost:9000/contacts/${this.contactId}`, { available: status })
+      axios.patch(`http://localhost:9000/contacts/${this.contactId}`, { active: status })
       window.location.reload();
     }
   },

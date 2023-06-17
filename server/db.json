@@ -1,72 +1,53 @@
 {
   "contacts": [
     {
-      "name": "abhishek",
-      "lastname": "SM",
-      "fieldofemployment": "front end developer",
-      "about": "cjdcdniuehfuwuweiowoiwj",
+      "active": false,
+      "department": "Software Developer",
+      "firstName": "Vikram",
+      "lastName": "A L",
+      "id": 100,
+      "info": "About text snippet sit amet ...",
       "skills": [
-        "vue.js",
-        "css",
+        "java",
+        "react"
+      ]
+    },
+    {
+      "active": "true",
+      "department": "Software Developer",
+      "firstName": "Test",
+      "lastName": "One",
+      "id": 101,
+      "info": "About text snippet sit amet ...",
+      "skills": [
+        "java",
+        "react"
+      ]
+    },
+    {
+      "active": true,
+      "department": "Software Developer",
+      "firstName": "Test",
+      "lastName": "Two",
+      "id": 102,
+      "info": "About text snippet sit amet ...",
+      "skills": [
+        "java",
+        "react"
+      ]
+    },
+    {
+      "active": true,
+      "department": "Software Developer engineer",
+      "firstName": "Test edit",
+      "lastName": "Three edited",
+      "id": 103,
+      "info": "About text snippet sit amet ... kjncsdnno",
+      "skills": [
+        "java",
+        "react",
         "javascript"
-      ],
-      "id": "GXLLbnT",
-      "available": false
-    },
-    {
-      "name": "karthik",
-      "lastname": "S bharadwaj",
-      "fieldofemployment": "back end Developer",
-      "about": "good one",
-      "skills": [
-        ".Net",
-        "php",
-        "sdckjn"
-      ],
-      "id": "diypmCg",
-      "available": true
-    },
-    {
-      "name": "Vikram",
-      "lastname": "A L",
-      "fieldofemployment": "Back End",
-      "about": "efsnefsnefnefoandadoajdoihdqjwdoiqwdjqdjpoiwqjdoijasdoiajsofiadoiuaijddhv9oajdoauhuhadpasmnjidvuha0edjawpodndiuvbaof0a9wjddiuhsdadjaokfniusdbfh9a8fqajpnaiubadjpofjbduohdfpoajdkodnvubviusirhwetrwejsdfhisudgfwdisuadgfishfiousfhslfbousafbjhbsfuysgfiuhiuhfpiHFIUEGFPISGFIHFPIUHSPIFUHIUiuhsfisfishfiuh",
-      "skills": [
-        ".Net",
-        "PHP",
-        "vvugu"
-      ],
-      "available": true,
-      "id": "gwM6uFF"
-    },
-    {
-      "name": "ganesh",
-      "lastname": "shetty",
-      "fieldofemployment": "Full Stack Developer",
-      "about": "nijnnnnwjfpiwjfwrnfpiuuer",
-      "skills": [
-        "CSS",
-        "HTML",
-        "JavaScript",
-        ".Net"
-      ],
-      "available": false,
-      "id": "ticTgP0"
-    },
-    {
-      "name": "Shreenidhi",
-      "lastname": "kurdi",
-      "fieldofemployment": "Film Making",
-      "about": "Such a interesting person in all th fields",
-      "skills": [
-        "Camer Man",
-        "Executive Producer",
-        "Assistant Director",
-        "Writer",
-        "Actor"
-      ],
-      "available": false,
-      "id": "2_mEBui"
+      ]
     }
   ]
 }

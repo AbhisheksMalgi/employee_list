@@ -17,13 +17,13 @@
                 <div class="col-md-4">
                     <form @submit.prevent="updateSubmit()">
                         <div class="mb-2">
-                            <input v-model="contact.name" type="text" class="form-control" placeholder="Name">
+                            <input v-model="contact.firstName" type="text" class="form-control" placeholder="Name">
                         </div>
                         <div class="mb-2">
-                            <input v-model="contact.lastname" type="text" class="form-control" placeholder=" Last Name">
+                            <input v-model="contact.lastName" type="text" class="form-control" placeholder=" Last Name">
                         </div>
                         <div class="mb-2">
-                            <input v-model="contact.fieldofemployment" type="text" class="form-control"
+                            <input v-model="contact.department" type="text" class="form-control"
                                 placeholder="Field of Employment">
                         </div>
                         <div v-for="(skill, index) in contact.skills" :key="index">
@@ -34,7 +34,7 @@
                         </div>
                         <button class="btn btn-sm btn-primary my-2" type="button" @click="addField">Add Skill</button>
                         <div class="mb-2">
-                            <input v-model="contact.about" type="text" class="form-control" placeholder="About">
+                            <input v-model="contact.info" type="text" class="form-control" placeholder="About">
                         </div>
                         <div class="mb-2">
                             <input type="submit" class="btn btn-primary" value="Update">
@@ -56,10 +56,10 @@ export default {
             contactId: this.$route.params.contactId,
             loading: false,
             contact: {
-                name: '',
-                lastname: '',
-                fieldofemployment: '',
-                about: '',
+                firstName: '',
+                lastName: '',
+                department: '',
+                info: '',
             },
             errorMessage: null,
         }

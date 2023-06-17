@@ -27,18 +27,18 @@
                         <div class="row align-items-center">
                             <RouterLink :to="`/contacts/view/${contacts.id}`" class="btn">
                                 <div class="col-sm-7">
-                                    <ul class="list-group" :style="cardBorderStyle(contacts.available)">
+                                    <ul class="list-group" :style="cardBorderStyle(contacts.active)">
                                         <li class="list-group-item">
-                                            Name : <span class="fw-bold">{{ contacts.name }}</span>
+                                            Name : <span class="fw-bold">{{ contacts.firstName }}</span>
                                         </li>
                                         <li class="list-group-item">
                                             Last Name :
-                                            <span class="fw-bold">{{ contacts.lastname }}</span>
+                                            <span class="fw-bold">{{ contacts.lastName }}</span>
                                         </li>
                                         <li class="list-group-item">
                                             Field of Employment :
                                             <span class="fw-bold">{{
-                                                contacts.fieldofemployment
+                                                contacts.department
                                             }}</span>
                                         </li>
                                     </ul>
